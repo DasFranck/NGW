@@ -13,9 +13,12 @@ def store_triples(tsv_content):
     store.bind("owl", OWL)
     store.bind("dc", DC)
     store.bind("foaf", FOAF)
+    store.bind("dbo", DBO)
+    store.bind("geo", GEO)
+    store.bind("schema", SCHEMA)
 
     hospital_list = []
-    for hospital in [tsv_content[1]]:
+    for hospital in tsv_content:
         node = BNode()
         store.add((node, RDF.type, SCHEMA.Organisation))
         # Organisation ID
@@ -36,14 +39,17 @@ def store_triples(tsv_content):
         store.add((node, GEO.longitude, Literal(hospital[15])))
         # ParentODSCode
         # ParentName
-        # Phone
+        store.add((node, FOAF.phone, Literal(hospital[18])))
         store.add((node, FOAF.email, Literal(hospital[19])))
         store.add((node, FOAF.homepage, Literal(hospital[20])))
         store.add((node, SCHEMA.faxNumber, Literal(hospital[21])))
 
-    print("--- printing raw triples ---")
-    for s, p, o in store:
-        print(s, p, o)
+    #print("--- printing raw triples ---")
+    #for s, p, o in store:
+    #    print(s, p, o)
+
+    with open("results.ttl", mode='wb') as fd:
+        fd.write(store.serialize(format="turtle", encoding="utf-8"))
 
 def get_tsv(csv_url):
     with requests.Session() as s:
