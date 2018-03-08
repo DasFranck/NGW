@@ -1,0 +1,91 @@
+<html>
+<head>
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+</head>
+<style>
+    body { margin: 50px; }
+</style>
+<body>
+<hr/>
+<h1 class="text-info">stardog-admin zk start Manual Page
+<hr/>
+<h1 class="text-info">NAME</h1>
+<br/>
+<div class="row"><div class="span8 offset1">stardog-admin zk start &mdash;Starts a ZooKeeper server instance.</div>
+</div>
+<br/>
+<h1 class="text-info">SYNOPSIS</h1>
+<br/>
+<div class="row">
+<div class="span8 offset1">
+stardog-admin zk start [ --config &lt;config file&gt; ] [ --foreground ] [ --home &lt;home&gt; ] [ {-p | --passwd} &lt;password&gt; ] [ {-P | --ask-password} ] [ {-u | --username} &lt;username&gt; ] [ {-v | --verbose} ]</div>
+</div>
+<br/>
+<h1 class="text-info">OPTIONS</h1>
+<br/>
+<div class="row">
+<div class="span8 offset1">
+--config &lt;config file&gt;</div>
+</div>
+<div class="row">
+<div class="span8 offset2">
+Zookeeper config file.</div>
+</div>
+<div class="row">
+<div class="span8 offset1">
+--foreground</div>
+</div>
+<div class="row">
+<div class="span8 offset2">
+Flag to start this application in the foreground.</div>
+</div>
+<div class="row">
+<div class="span8 offset1">
+--home &lt;home&gt;</div>
+</div>
+<div class="row">
+<div class="span8 offset2">
+Zookeeper home directory location. This is where the log and other config resides.</div>
+</div>
+<div class="row">
+<div class="span8 offset1">
+-p &lt;password&gt;, --passwd &lt;password&gt;</div>
+</div>
+<div class="row">
+<div class="span8 offset2">
+Password.</div>
+</div>
+<div class="row">
+<div class="span8 offset1">
+-P, --ask-password</div>
+</div>
+<div class="row">
+<div class="span8 offset2">
+Prompt for password.</div>
+</div>
+<div class="row">
+<div class="span8 offset1">
+-u &lt;username&gt;, --username &lt;username&gt;</div>
+</div>
+<div class="row">
+<div class="span8 offset2">
+User name.</div>
+</div>
+<div class="row">
+<div class="span8 offset1">
+-v, --verbose</div>
+</div>
+<div class="row">
+<div class="span8 offset2">
+Verbose flag that causes more detailed information to be printed</div>
+</div>
+<br/>
+<h1 class="text-info">DISCUSSION</h1>
+<br/>
+<div class="row">
+<div class="span8 offset1">
+In order to configure your zookeeper instance you will create a config file with the settings described in http://zookeeper.apache.org/doc/r3.4.6/zookeeperAdmin.html. By default the zookeeper config file is located in $STARDOG_HOME/zookeeper.properties. A different config file can be specified with the option --config.<br/>In order to stop the ZooKeeper process you can use 'cluster zkstop'.</div>
+</div>
+</body>
+</html>
+

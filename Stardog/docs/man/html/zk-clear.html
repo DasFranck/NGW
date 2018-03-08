@@ -1,0 +1,108 @@
+<html>
+<head>
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+</head>
+<style>
+    body { margin: 50px; }
+</style>
+<body>
+<hr/>
+<h1 class="text-info">stardog-admin zk clear Manual Page
+<hr/>
+<h1 class="text-info">NAME</h1>
+<br/>
+<div class="row"><div class="span8 offset1">stardog-admin zk clear &mdash;Clears the data stored in ZooKeeper by the Stardog cluster.</div>
+</div>
+<br/>
+<h1 class="text-info">SYNOPSIS</h1>
+<br/>
+<div class="row">
+<div class="span8 offset1">
+stardog-admin zk clear [ --force ] [ --home &lt;home&gt; ] [ --path &lt;zkPath&gt; ] [ --zkauth &lt;auth&gt; ] [--] [ &lt;zkAddress&gt; ]</div>
+</div>
+<br/>
+<h1 class="text-info">OPTIONS</h1>
+<br/>
+<div class="row">
+<div class="span8 offset1">
+--force</div>
+</div>
+<div class="row">
+<div class="span8 offset2">
+Force flag. *WARNING* If this flag is set, all Stardog data in the Zookeeper will be deleted even if it  looks like there are active Stardog nodes in the cluster. This option is extremely dangerous and should not be used unless there is a fatal error with Zookeeper.</div>
+</div>
+<div class="row">
+<div class="span8 offset1">
+--home &lt;home&gt;</div>
+</div>
+<div class="row">
+<div class="span8 offset2">
+Stardog home directory location. This is where the stardog.properties file is located at.</div>
+</div>
+<div class="row">
+<div class="span8 offset1">
+--path &lt;zkPath&gt;</div>
+</div>
+<div class="row">
+<div class="span8 offset2">
+Zookeeper path to delete relative to Stardog root directory. By default the root Stardog directory is deleted along with its subdirectories.</div>
+</div>
+<div class="row">
+<div class="span8 offset1">
+--zkauth &lt;auth&gt;</div>
+</div>
+<div class="row">
+<div class="span8 offset2">
+Zookeeper authentication string. If this value is not provided the value for the configuration option 'pack.zookeeper.auth' from stardog.properties is used. If that value is not set either then the default value 'admin:admin' will be used.</div>
+</div>
+<div class="row">
+<div class="span8 offset1">
+--
+</div>
+</div>
+<div class="row">
+<div class="span8 offset2">
+This option can be used to separate command-line options from the list of argument, (useful when arguments might be mistaken for command-line options
+</div>
+</div>
+<div class="row">
+<div class="span8 offset1">
+&lt;zkAddress&gt;</div>
+</div>
+<div class="row">
+<div class="span8 offset2">
+Zookeeper connection string. If this value is not provided the value for the configuration option 'pack.zookeeper.auth' from stardog.properties is used.</div>
+</div>
+<br/>
+<h1 class="text-info">DISCUSSION</h1>
+<br/>
+<div class="row">
+<div class="span8 offset1">
+This command connects to a Zookeeper cluster and clears the data stored by Stardog. Any other data stored in Zookeeper by other applications will remain intact.                                                                                                                                         *WARNING:* This command is extremely dangerous and should not be used while Stardog cluster is running or it might cause unpredictable problems. This command is intended to be used when a new Stardog cluster is being deployed but the Zookeeper stores Stardog state from a previous deployment. After this command is executed, the first Stardog node that starts will recreate the Zookeeper data using its local state. </div>
+</div>
+<br/>
+<h1 class="text-info">EXAMPLES</h1>
+<br/>
+<div class="row">
+<div class="span12 offset1">
+<p>
+Connects to a Zookeeper at the given address and clears all the data:</p>
+<pre>
+    $ stardog-admin zk clear 127.0.0.1:2180</pre>
+<p>
+Connects to a Zookeeper at the given address with the given authentication string and prints the data:</p>
+<pre>
+    $ stardog-admin zk clear --zkauth my_secret_key 127.0.0.1:2180</pre>
+<p>
+Read the Zookeeper address and the authentication string from stardog.properties in the specified home directory:</p>
+<pre>
+    $ stardog-admin zk clear --home stardog_home_path</pre>
+<p>
+Read the Zookeeper address and the authentication string from stardog.properties in $STARDOG_HOME:</p>
+<pre>
+    $ stardog-admin zk clear</pre>
+</div>
+</div>
+</body>
+</html>
+

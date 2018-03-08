@@ -1,0 +1,31 @@
+// WARNING: This file is auto-generated. Do NOT edit manually.
+
+=== Stardog CLI
+
+* {manpages}/data-add.html[`data add`], {manpages}/data-export.html[`data export`], {manpages}/data-obfuscate.html[`data obfuscate`], {manpages}/data-remove.html[`data remove`], {manpages}/data-size.html[`data size`]
+* {manpages}/doc-count.html[`doc count`], {manpages}/doc-delete.html[`doc delete`], {manpages}/doc-get.html[`doc get`], {manpages}/doc-put.html[`doc put`]
+* {manpages}/file-cat.html[`file cat`], {manpages}/file-obfuscate.html[`file obfuscate`], {manpages}/file-split.html[`file split`]
+* {manpages}/graphql-execute.html[`graphql execute`], {manpages}/graphql-explain.html[`graphql explain`], {manpages}/graphql-schema.html[`graphql schema`]
+* {manpages}/icv-convert.html[`icv convert`], {manpages}/icv-explain.html[`icv explain`], {manpages}/icv-export.html[`icv export`], {manpages}/icv-fix.html[`icv fix`], {manpages}/icv-validate.html[`icv validate`]
+* {manpages}/namespace-add.html[`namespace add`], {manpages}/namespace-export.html[`namespace export`], {manpages}/namespace-import.html[`namespace import`], {manpages}/namespace-list.html[`namespace list`], {manpages}/namespace-remove.html[`namespace remove`]
+* {manpages}/query-execute.html[`query execute`], {manpages}/query-explain.html[`query explain`], {manpages}/query-obfuscate.html[`query obfuscate`], {manpages}/query-search.html[`query search`]
+* {manpages}/reasoning-consistency.html[`reasoning consistency`], {manpages}/reasoning-explain.html[`reasoning explain`], {manpages}/reasoning-schema.html[`reasoning schema`], {manpages}/reasoning-undo.html[`reasoning undo`]
+* {manpages}/tx-begin.html[`tx begin`], {manpages}/tx-commit.html[`tx commit`], {manpages}/tx-list.html[`tx list`], {manpages}/tx-rollback.html[`tx rollback`]
+* {manpages}/vcs-commit.html[`vcs commit`], {manpages}/vcs-diff.html[`vcs diff`], {manpages}/vcs-list.html[`vcs list`], {manpages}/vcs-query.html[`vcs query`], {manpages}/vcs-revert.html[`vcs revert`], {manpages}/vcs-tag.html[`vcs tag`]
+
+=== Stardog Admin CLI
+
+* {manpages}/cluster-generate.html[`cluster generate`], {manpages}/cluster-info.html[`cluster info`], {manpages}/cluster-status.html[`cluster status`], {manpages}/cluster-stop.html[`cluster stop`], {manpages}/cluster-zkstart.html[`cluster zkstart`], {manpages}/cluster-zkstop.html[`cluster zkstop`]
+* {manpages}/db-backup.html[`db backup`], {manpages}/db-copy.html[`db copy`], {manpages}/db-create.html[`db create`], {manpages}/db-drop.html[`db drop`], {manpages}/db-list.html[`db list`], {manpages}/db-offline.html[`db offline`], {manpages}/db-online.html[`db online`], {manpages}/db-optimize.html[`db optimize`], {manpages}/db-repair.html[`db repair`], {manpages}/db-restore.html[`db restore`], {manpages}/db-status.html[`db status`]
+* {manpages}/function-add.html[`function add`], {manpages}/function-list.html[`function list`], {manpages}/function-remove.html[`function remove`]
+* {manpages}/icv-add.html[`icv add`], {manpages}/icv-drop.html[`icv drop`], {manpages}/icv-remove.html[`icv remove`]
+* {manpages}/license-info.html[`license info`], {manpages}/license-register.html[`license register`]
+* {manpages}/log-print.html[`log print`]
+* {manpages}/metadata-get.html[`metadata get`], {manpages}/metadata-set.html[`metadata set`]
+* {manpages}/query-kill.html[`query kill`], {manpages}/query-list.html[`query list`], {manpages}/query-status.html[`query status`]
+* {manpages}/role-add.html[`role add`], {manpages}/role-grant.html[`role grant`], {manpages}/role-list.html[`role list`], {manpages}/role-permission.html[`role permission`], {manpages}/role-remove.html[`role remove`], {manpages}/role-revoke.html[`role revoke`]
+* {manpages}/server-start.html[`server start`], {manpages}/server-status.html[`server status`], {manpages}/server-stop.html[`server stop`]
+* {manpages}/stored-add.html[`stored add`], {manpages}/stored-list.html[`stored list`], {manpages}/stored-remove.html[`stored remove`]
+* {manpages}/user-add.html[`user add`], {manpages}/user-addrole.html[`user addrole`], {manpages}/user-disable.html[`user disable`], {manpages}/user-enable.html[`user enable`], {manpages}/user-grant.html[`user grant`], {manpages}/user-list.html[`user list`], {manpages}/user-passwd.html[`user passwd`], {manpages}/user-permission.html[`user permission`], {manpages}/user-remove.html[`user remove`], {manpages}/user-removerole.html[`user removerole`], {manpages}/user-revoke.html[`user revoke`]
+* {manpages}/virtual-add.html[`virtual add`], {manpages}/virtual-import.html[`virtual import`], {manpages}/virtual-list.html[`virtual list`], {manpages}/virtual-mappings.html[`virtual mappings`], {manpages}/virtual-options.html[`virtual options`], {manpages}/virtual-remove.html[`virtual remove`]
+* {manpages}/zk-clear.html[`zk clear`], {manpages}/zk-info.html[`zk info`], {manpages}/zk-start.html[`zk start`], {manpages}/zk-stop.html[`zk stop`]

@@ -1,0 +1,50 @@
+.\" generated with Ronn/v0.7.3
+.\" http://github.com/rtomayko/ronn/tree/0.7.3
+.
+.TH "STARDOG\-ADMIN_CLUSTER_GENERATE" "8" "January 2018" "Stardog Union" "stardog-admin"
+.
+.SH "NAME"
+\fBstardog\-admin_cluster_generate\fR \- Creates a set of files with the minimal configuration for deploying a Stardog cluster\.
+.
+.SH "SYNOPSIS"
+\fBstardog\-admin\fR \fBcluster\fR \fBgenerate\fR [ {\-d | \-\-output\-dir} \fIpath\fR ] [ \-\-zk\-data\-dir \fIpath\fR ] [ \-\-zk\-election\-port \fIleader election port\fR ] [ \-\-zk\-leader\-port \fIleader port\fR ] [ \-\-zk\-port \fIclient port\fR ] [\-\-] \fInodes\fR\.\.\.
+.
+.SH "DESCRIPTION"
+Creates a set of files with the minimal configuration for deploying a Stardog cluster\.Make sure that the hostnames or IP addresses, and ports are accessible between the nodesinvolved in the cluster\. Keep in mind that there is a single \'zookeeper\.properties\' since they are same contents for all nodes, but there is a \'stardog\.properties\' file for each node\.
+.
+.SH "OPTIONS"
+.
+.TP
+\fB\-d\fR \fIpath\fR, \fB\-\-output\-dir\fR \fIpath\fR
+The directory where the config files are going to be generated\. If nothing is specified they will be generated to the current directory\.
+.
+.TP
+\fB\-\-zk\-data\-dir\fR \fIpath\fR
+ZooKeeper\'s data directory
+.
+.TP
+\fB\-\-zk\-election\-port\fR \fIleader election port\fR
+The port where ZooKeeper nodes are going to connect for electing a ZooKeeper leader node\.
+.
+.TP
+\fB\-\-zk\-leader\-port\fR \fIleader port\fR
+The port where ZooKeeper nodes are going to connect to the ZooKeeper leader node\.
+.
+.TP
+\fB\-\-zk\-port\fR \fIclient port\fR
+The port where ZooKeeper is going to serving clients\' requests\.
+.
+.TP
+\-\-
+This option can be used to separate command\-line options from the list of arguments (useful when arguments might be mistaken for command\-line options)\.
+.
+.TP
+\fInodes\fR
+The list of hostnames (or IP addresses) of the nodes in the cluster\.
+.
+.SH "EXAMPLES"
+.
+.TP
+Generating config files for three nodes:
+$ stardog\-admin cluster generate \-\-output\-dir /home/stardog 10\.0\.0\.1 10\.0\.0\.2 10\.0\.0\.3
+

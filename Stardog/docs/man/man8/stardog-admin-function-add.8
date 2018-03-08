@@ -1,0 +1,65 @@
+.\" generated with Ronn/v0.7.3
+.\" http://github.com/rtomayko/ronn/tree/0.7.3
+.
+.TH "STARDOG\-ADMIN_FUNCTION_ADD" "8" "January 2018" "Stardog Union" "stardog-admin"
+.
+.SH "NAME"
+\fBstardog\-admin_function_add\fR \- Adds a new stored function
+.
+.SH "SYNOPSIS"
+\fBstardog\-admin\fR [ \-\-server \fIserver url\fR ] \fBfunction\fR \fBadd\fR [ \-\-overwrite ] [ {\-p | \-\-passwd} \fIpassword\fR ] [ {\-P | \-\-ask\-password} ] [ {\-u | \-\-username} \fIusername\fR ] [ {\-v | \-\-verbose} ] [\-\-] \fIfunction\fR
+.
+.SH "OPTIONS"
+.
+.TP
+\fB\-\-overwrite\fR
+Overwrite an existing stored function with the same name\.
+.
+.TP
+\fB\-p\fR \fIpassword\fR, \fB\-\-passwd\fR \fIpassword\fR
+Password\.
+.
+.TP
+\fB\-P\fR, \fB\-\-ask\-password\fR
+Prompt for password\.
+.
+.TP
+\fB\-\-server\fR \fIserver url\fR
+URL of Stardog Server\. If this option isn\'t specified, it will be read from JVM argument \'stardog\.default\.cli\.server\'\. If the JVM arg isn\'t set, the default value \'http://localhost:5820\' is used\. If server URL has no explicit port value, the default port value \'5820\' is used\. Example: \'stardog\-admin \-\-server http://12\.34\.56\.78:5820 server stop\'
+.
+.TP
+\fB\-u\fR \fIusername\fR, \fB\-\-username\fR \fIusername\fR
+User name\.
+.
+.TP
+\fB\-v\fR, \fB\-\-verbose\fR
+Verbose flag that causes more detailed information to be printed
+.
+.TP
+\-\-
+This option can be used to separate command\-line options from the list of arguments (useful when arguments might be mistaken for command\-line options)\.
+.
+.TP
+\fIfunction\fR
+The definition of the stored function in the format "FUNCTION name([parameter[, parameter]*]) { \fISPARQL expression\fR }"\.
+.
+.SH "DISCUSSION"
+Adds a new stored function\. Stored functions assign a name to a SPARQL function expression and allows the expression to be executed in a SPARQL query by using the name\. Stored functions can be used to query any database\.
+.
+.SH "EXAMPLES"
+.
+.TP
+Adds a new stored function:
+$ stardog\-admin function add "function permutation(?n, ?r) { factorial(?n) / factorial(?n \- ?r) }"
+.
+.TP
+Adds a new stored function overwriting previous function with same name:
+$ stardog\-admin function add \-\-overwrite "function combination(?n, ?r) { permutation(?n, ?r) / factorial(?r) }"
+.
+.TP
+Adds multiple stored functions:
+$ stardog\-admin function add "function permutation(?n, ?r) { factorial(?n) / factorial(?n \- ?r) } \e
+.
+.br
+function combination(?n, ?r) { permutation(?n, ?r) / factorial(?r) }"
+

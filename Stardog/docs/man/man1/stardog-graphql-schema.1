@@ -1,0 +1,71 @@
+.\" generated with Ronn/v0.7.3
+.\" http://github.com/rtomayko/ronn/tree/0.7.3
+.
+.TH "STARDOG_GRAPHQL_SCHEMA" "1" "January 2018" "Stardog Union" "stardog"
+.
+.SH "NAME"
+\fBstardog_graphql_schema\fR \- List, get, add or remove GraphQL schemas\. The default action is listing existing schemas\.
+.
+.SH "SYNOPSIS"
+\fBstardog\fR \fBgraphql\fR \fBschema\fR [ {\-a | \-\-add} \fIschemaName\fR ] [ {\-l | \-\-list} ] [ {\-p | \-\-passwd} \fIpassword\fR ] [ {\-P | \-\-ask\-password} ] [ {\-r | \-\-remove} \fIschemaName\fR ] [ {\-s | \-\-show} \fIschemaName\fR ] [ {\-u | \-\-username} \fIusername\fR ] [ {\-v | \-\-verbose} ] [\-\-] \fIdatabase\fR \fIschemaFile\fR\.\.\.
+.
+.SH "OPTIONS"
+.
+.TP
+\fB\-a\fR \fIschemaName\fR, \fB\-\-add\fR \fIschemaName\fR
+Adds a new GraphQL schema\.
+.
+.TP
+\fB\-l\fR, \fB\-\-list\fR
+Lists the names of all GraphQL schemas in this database
+.
+.TP
+\fB\-p\fR \fIpassword\fR, \fB\-\-passwd\fR \fIpassword\fR
+Password\.
+.
+.TP
+\fB\-P\fR, \fB\-\-ask\-password\fR
+Prompt for password\.
+.
+.TP
+\fB\-r\fR \fIschemaName\fR, \fB\-\-remove\fR \fIschemaName\fR
+Removes a GraphQL schema from this database\.
+.
+.TP
+\fB\-s\fR \fIschemaName\fR, \fB\-\-show\fR \fIschemaName\fR
+Prints the GraphQL schema with the given name\.
+.
+.TP
+\fB\-u\fR \fIusername\fR, \fB\-\-username\fR \fIusername\fR
+User name\.
+.
+.TP
+\fB\-v\fR, \fB\-\-verbose\fR
+Verbose flag that causes more detailed information to be printed
+.
+.TP
+\-\-
+This option can be used to separate command\-line options from the list of arguments (useful when arguments might be mistaken for command\-line options)\.
+.
+.TP
+\fIdatabase\fR \fIschemaFile\fR
+The name of the database or the full connection string of the database to connect to\. If only the name is provided, the default server URL will be pre\-pended to the name of the database in order to construct the connection string\. Connection parameters such as \';reasoning=true\' can be included in the provided database name\. Connection parameters specified like this can be overridden by specific options on the command\. The default server URL will be read from the JVM argument \'stardog\.default\.cli\.server\'\. If the JVM argument is not set, the default value \'http://localhost:5820\' is used\. If the server URL has no explicit port value, the default port value \'5820\' is used\. To use a secure connection, you should specify the full connection string and postfix \'s\' to the protocol, e\.g\. https\. The subsequent argument is the GraphQL schema file if \-\-add option is used\.
+.
+.SH "EXAMPLES"
+.
+.TP
+Lists the existing GraphQL schemas in a database
+$ stardog graphql schema \-\-list myDb
+.
+.TP
+Adds the GraphQL schema to the database
+$ stardog graphql schema \-\-add starwars myDb starwars\.graphqls
+.
+.TP
+Prints the GraphQL schema with given name
+$ stardog graphql schema \-\-show starwars myDb
+.
+.TP
+Remove the GraphQL schema with given name from the database
+$ stardog graphql schema \-\-remove starwars myDb
+

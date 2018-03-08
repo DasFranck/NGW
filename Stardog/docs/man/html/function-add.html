@@ -1,0 +1,120 @@
+<html>
+<head>
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+</head>
+<style>
+    body { margin: 50px; }
+</style>
+<body>
+<hr/>
+<h1 class="text-info">stardog-admin function add Manual Page
+<hr/>
+<h1 class="text-info">NAME</h1>
+<br/>
+<div class="row"><div class="span8 offset1">stardog-admin function add &mdash;Adds a new stored function</div>
+</div>
+<br/>
+<h1 class="text-info">SYNOPSIS</h1>
+<br/>
+<div class="row">
+<div class="span8 offset1">
+stardog-admin [ --server &lt;server url&gt; ]function add [ --overwrite ] [ {-p | --passwd} &lt;password&gt; ] [ {-P | --ask-password} ] [ {-u | --username} &lt;username&gt; ] [ {-v | --verbose} ] [--] &lt;function&gt;</div>
+</div>
+<br/>
+<h1 class="text-info">OPTIONS</h1>
+<br/>
+<div class="row">
+<div class="span8 offset1">
+--overwrite</div>
+</div>
+<div class="row">
+<div class="span8 offset2">
+Overwrite an existing stored function with the same name.</div>
+</div>
+<div class="row">
+<div class="span8 offset1">
+-p &lt;password&gt;, --passwd &lt;password&gt;</div>
+</div>
+<div class="row">
+<div class="span8 offset2">
+Password.</div>
+</div>
+<div class="row">
+<div class="span8 offset1">
+-P, --ask-password</div>
+</div>
+<div class="row">
+<div class="span8 offset2">
+Prompt for password.</div>
+</div>
+<div class="row">
+<div class="span8 offset1">
+--server &lt;server url&gt;</div>
+</div>
+<div class="row">
+<div class="span8 offset2">
+URL of Stardog Server. If this option isn't specified, it will be read from JVM argument 'stardog.default.cli.server'. If the JVM arg isn't set, the default value 'http://localhost:5820' is used. If server URL has no explicit port value, the default port value '5820' is used.  Example: 'stardog-admin --server http://12.34.56.78:5820 server stop' </div>
+</div>
+<div class="row">
+<div class="span8 offset1">
+-u &lt;username&gt;, --username &lt;username&gt;</div>
+</div>
+<div class="row">
+<div class="span8 offset2">
+User name.</div>
+</div>
+<div class="row">
+<div class="span8 offset1">
+-v, --verbose</div>
+</div>
+<div class="row">
+<div class="span8 offset2">
+Verbose flag that causes more detailed information to be printed</div>
+</div>
+<div class="row">
+<div class="span8 offset1">
+--
+</div>
+</div>
+<div class="row">
+<div class="span8 offset2">
+This option can be used to separate command-line options from the list of argument, (useful when arguments might be mistaken for command-line options
+</div>
+</div>
+<div class="row">
+<div class="span8 offset1">
+&lt;function&gt;</div>
+</div>
+<div class="row">
+<div class="span8 offset2">
+The definition of the stored function in the format "FUNCTION name([parameter[, parameter]*]) { &lt;SPARQL expression&gt; }".</div>
+</div>
+<br/>
+<h1 class="text-info">DISCUSSION</h1>
+<br/>
+<div class="row">
+<div class="span8 offset1">
+Adds a new stored function. Stored functions assign a name to a SPARQL function expression and allows the expression to be executed in a SPARQL query by using the name. Stored functions can be used to query any database.</div>
+</div>
+<br/>
+<h1 class="text-info">EXAMPLES</h1>
+<br/>
+<div class="row">
+<div class="span12 offset1">
+<p>
+Adds a new stored function:</p>
+<pre>
+    $ stardog-admin function add "function permutation(?n, ?r) { factorial(?n) / factorial(?n - ?r) }"</pre>
+<p>
+Adds a new stored function overwriting previous function with same name:</p>
+<pre>
+    $ stardog-admin function add --overwrite "function combination(?n, ?r) { permutation(?n, ?r) / factorial(?r) }"</pre>
+<p>
+Adds multiple stored functions:</p>
+<pre>
+    $ stardog-admin function add "function permutation(?n, ?r) { factorial(?n) / factorial(?n - ?r) } \ <br/>                                   function combination(?n, ?r) { permutation(?n, ?r) / factorial(?r) }"</pre>
+</div>
+</div>
+</body>
+</html>
+

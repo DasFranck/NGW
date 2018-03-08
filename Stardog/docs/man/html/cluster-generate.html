@@ -1,0 +1,97 @@
+<html>
+<head>
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+</head>
+<style>
+    body { margin: 50px; }
+</style>
+<body>
+<hr/>
+<h1 class="text-info">stardog-admin cluster generate Manual Page
+<hr/>
+<h1 class="text-info">NAME</h1>
+<br/>
+<div class="row"><div class="span8 offset1">stardog-admin cluster generate &mdash;Creates a set of files with the minimal configuration for deploying a Stardog cluster.Make sure that the hostnames or IP addresses, and ports are accessible between the nodesinvolved in the cluster. Keep in mind that there is a single 'zookeeper.properties' since they are same contents for all nodes, but there is a 'stardog.properties' file for each node.</div>
+</div>
+<br/>
+<h1 class="text-info">SYNOPSIS</h1>
+<br/>
+<div class="row">
+<div class="span8 offset1">
+stardog-admin cluster generate [ {-d | --output-dir} &lt;path&gt; ] [ --zk-data-dir &lt;path&gt; ] [ --zk-election-port &lt;leader election port&gt; ] [ --zk-leader-port &lt;leader port&gt; ] [ --zk-port &lt;client port&gt; ] [--] &lt;nodes&gt;...</div>
+</div>
+<br/>
+<h1 class="text-info">OPTIONS</h1>
+<br/>
+<div class="row">
+<div class="span8 offset1">
+-d &lt;path&gt;, --output-dir &lt;path&gt;</div>
+</div>
+<div class="row">
+<div class="span8 offset2">
+The directory where the config files are going to be generated. If nothing is specified they will be generated to the current directory.</div>
+</div>
+<div class="row">
+<div class="span8 offset1">
+--zk-data-dir &lt;path&gt;</div>
+</div>
+<div class="row">
+<div class="span8 offset2">
+ZooKeeper's data directory</div>
+</div>
+<div class="row">
+<div class="span8 offset1">
+--zk-election-port &lt;leader election port&gt;</div>
+</div>
+<div class="row">
+<div class="span8 offset2">
+The port where ZooKeeper nodes are going to connect for electing a ZooKeeper leader node.</div>
+</div>
+<div class="row">
+<div class="span8 offset1">
+--zk-leader-port &lt;leader port&gt;</div>
+</div>
+<div class="row">
+<div class="span8 offset2">
+The port where ZooKeeper nodes are going to connect to the ZooKeeper leader node.</div>
+</div>
+<div class="row">
+<div class="span8 offset1">
+--zk-port &lt;client port&gt;</div>
+</div>
+<div class="row">
+<div class="span8 offset2">
+The port where ZooKeeper is going to serving clients' requests.</div>
+</div>
+<div class="row">
+<div class="span8 offset1">
+--
+</div>
+</div>
+<div class="row">
+<div class="span8 offset2">
+This option can be used to separate command-line options from the list of argument, (useful when arguments might be mistaken for command-line options
+</div>
+</div>
+<div class="row">
+<div class="span8 offset1">
+&lt;nodes&gt;</div>
+</div>
+<div class="row">
+<div class="span8 offset2">
+The list of hostnames (or IP addresses) of the nodes in the cluster.</div>
+</div>
+<br/>
+<h1 class="text-info">EXAMPLES</h1>
+<br/>
+<div class="row">
+<div class="span12 offset1">
+<p>
+Generating config files for three nodes:</p>
+<pre>
+    $ stardog-admin cluster generate --output-dir /home/stardog 10.0.0.1 10.0.0.2 10.0.0.3</pre>
+</div>
+</div>
+</body>
+</html>
+

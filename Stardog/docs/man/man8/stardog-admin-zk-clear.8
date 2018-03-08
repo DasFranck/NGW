@@ -1,0 +1,58 @@
+.\" generated with Ronn/v0.7.3
+.\" http://github.com/rtomayko/ronn/tree/0.7.3
+.
+.TH "STARDOG\-ADMIN_ZK_CLEAR" "8" "January 2018" "Stardog Union" "stardog-admin"
+.
+.SH "NAME"
+\fBstardog\-admin_zk_clear\fR \- Clears the data stored in ZooKeeper by the Stardog cluster\.
+.
+.SH "SYNOPSIS"
+\fBstardog\-admin\fR \fBzk\fR \fBclear\fR [ \-\-force ] [ \-\-home \fIhome\fR ] [ \-\-path \fIzkPath\fR ] [ \-\-zkauth \fIauth\fR ] [\-\-] [ \fIzkAddress\fR ]
+.
+.SH "OPTIONS"
+.
+.TP
+\fB\-\-force\fR
+Force flag\. \fIWARNING\fR If this flag is set, all Stardog data in the Zookeeper will be deleted even if it looks like there are active Stardog nodes in the cluster\. This option is extremely dangerous and should not be used unless there is a fatal error with Zookeeper\.
+.
+.TP
+\fB\-\-home\fR \fIhome\fR
+Stardog home directory location\. This is where the stardog\.properties file is located at\.
+.
+.TP
+\fB\-\-path\fR \fIzkPath\fR
+Zookeeper path to delete relative to Stardog root directory\. By default the root Stardog directory is deleted along with its subdirectories\.
+.
+.TP
+\fB\-\-zkauth\fR \fIauth\fR
+Zookeeper authentication string\. If this value is not provided the value for the configuration option \'pack\.zookeeper\.auth\' from stardog\.properties is used\. If that value is not set either then the default value \'admin:admin\' will be used\.
+.
+.TP
+\-\-
+This option can be used to separate command\-line options from the list of arguments (useful when arguments might be mistaken for command\-line options)\.
+.
+.TP
+\fIzkAddress\fR
+Zookeeper connection string\. If this value is not provided the value for the configuration option \'pack\.zookeeper\.auth\' from stardog\.properties is used\.
+.
+.SH "DISCUSSION"
+This command connects to a Zookeeper cluster and clears the data stored by Stardog\. Any other data stored in Zookeeper by other applications will remain intact\. \fIWARNING:\fR This command is extremely dangerous and should not be used while Stardog cluster is running or it might cause unpredictable problems\. This command is intended to be used when a new Stardog cluster is being deployed but the Zookeeper stores Stardog state from a previous deployment\. After this command is executed, the first Stardog node that starts will recreate the Zookeeper data using its local state\.
+.
+.SH "EXAMPLES"
+.
+.TP
+Connects to a Zookeeper at the given address and clears all the data:
+$ stardog\-admin zk clear 127\.0\.0\.1:2180
+.
+.TP
+Connects to a Zookeeper at the given address with the given authentication string and prints the data:
+$ stardog\-admin zk clear \-\-zkauth my_secret_key 127\.0\.0\.1:2180
+.
+.TP
+Read the Zookeeper address and the authentication string from stardog\.properties in the specified home directory:
+$ stardog\-admin zk clear \-\-home stardog_home_path
+.
+.TP
+Read the Zookeeper address and the authentication string from stardog\.properties in $STARDOG_HOME:
+$ stardog\-admin zk clear
+
