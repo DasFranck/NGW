@@ -1,14 +1,64 @@
-var express = require('express')
-       var app = express()
+const { Connection, query } = require('stardog');
 
-app.set("view engine", "hbs")
+var express = require('express');
+var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
 
-app.get('/', function(request, response){
-        response.render('index.hbs')
-})
+var index = require('./routes/index');
+var users = require('./routes/users');
 
-app.get('/test', function(request, response){
-    response.end("It's working!")
-})
+var app = express();
 
-app.listen(3000, () => console.log('My website is listening on port 3000!'))
+// Connect to database
+const conn = new Connection({
+  username: 'admin',
+  password: 'admin',
+  endpoint: 'http://localhost:5820',
+});
+
+/*
+query.execute(conn, 'ngw_project', 'select distinct ?s where { ?s ?p ?o }', {
+  limit: 10,
+  offset: 0,
+}).then(({ body }) => {
+  console.log(body.results.bindings);
+});
+*/
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
+
+// uncomment after placing your favicon in /public
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/', index);
+app.use('/users', users);
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
+
+module.exports = app;
