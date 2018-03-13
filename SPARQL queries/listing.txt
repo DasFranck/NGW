@@ -1,0 +1,14 @@
+# DESCRIPTION #
+
+Liste les hopitaux par leur code en sortant le code, le nom, l'email et le telephone.
+
+# PREFIXES #
+
+PREFIX ngw: <local:ngwproject:>
+PREFIX schema: <http://schema.org/>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+# QUERY #
+
+SELECT ?Code ?Name ?Contact_Mail ?Contact_Phone WHERE { ?Org a schema:Organisation . ?Org ngw:organisationCode ?Code . ?Org dbo:name ?Name . OPTIONAL { ?Org foaf:email ?Contact_Mail . ?Org foaf:phone ?Contact_Phone } } ORDER BY asc(?Code)
