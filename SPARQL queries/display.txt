@@ -5,12 +5,6 @@ Affiche les infos suivantes qui sont disponibles pour un hôpital recherché:
 
 ! Modifier la valeur $CODE$ par le code de l'hôpital à rechercher pour chaque requête !
 
-# PREFIXES #
+# INLINE QUERY #
 
-PREFIX ngw: <local:ngwproject:>
-PREFIX schema: <http://schema.org/>
-PREFIX dbo: <http://dbpedia.org/ontology/>
-
-# QUERY #
-
-SELECT ?Code ?Name ?Sector ?Category ?Parent_Code ?Parent_Name ?Contact_Mail ?Contact_Phone ?Contact_Website ?Addr_Line1 ?Addr_Line2 ?Addr_Line3 ?Addr_Code ?Addr_City ?Addr_County WHERE { ?Org a schema:Organisation . ?Org ngw:organisationCode ?Code . ?Org dbo:name ?Name . ?Org ngw:organisationSector ?Sector . ?Org ngw:organisationSubType ?Category . ?Org ngw:parentODSCode ?Parent_Code . ?Org ngw:parentName ?Parent_Name . OPTIONAL { ?Org foaf:email ?Contact_Mail . ?Org foaf:phone ?Contact_Phone . ?Org foaf:homepage ?Contact_Website . ?Org ngw:address1 ?Addr_Line1 . ?Org ngw:address2 ?Addr_Line2 . ?Org ngw:address3 ?Addr_Line3 . ?Org dbo:postalCode ?Addr_Code . ?Org dbo:city ?Addr_City . ?Org dbo:county ?Addr_County . } FILTER (?Code = "$CODE$") }
+PREFIX ngw: <local:ngwproject:> PREFIX schema: <http://schema.org/> PREFIX dbo: <http://dbpedia.org/ontology/> SELECT ?Code ?Name ?Sector ?Category ?Parent_Code ?Parent_Name ?Contact_Mail ?Contact_Phone ?Contact_Website ?Addr_Line1 ?Addr_Line2 ?Addr_Line3 ?Addr_Code ?Addr_City ?Addr_County WHERE { ?Org a schema:Organisation . ?Org ngw:organisationCode ?Code . ?Org dbo:name ?Name . ?Org ngw:organisationSector ?Sector . ?Org ngw:organisationSubType ?Category . ?Org ngw:parentODSCode ?Parent_Code . ?Org ngw:parentName ?Parent_Name . OPTIONAL { ?Org foaf:email ?Contact_Mail . ?Org foaf:phone ?Contact_Phone . ?Org foaf:homepage ?Contact_Website . ?Org ngw:address1 ?Addr_Line1 . ?Org ngw:address2 ?Addr_Line2 . ?Org ngw:address3 ?Addr_Line3 . ?Org dbo:postalCode ?Addr_Code . ?Org dbo:city ?Addr_City . ?Org dbo:county ?Addr_County . } FILTER (?Code = "$CODE$") }
