@@ -1,0 +1,10 @@
+# DESCRIPTION #
+
+Affiche les infos suivantes qui sont disponibles pour un hôpital recherché:
+- DBPedia
+
+! Modifier la valeur $NAME$ par le nom de l'hôpital étudié !
+
+# INLINE QUERY #
+
+PREFIX dbr: <http://dbpedia.org/resource/> PREFIX dbo: <http://dbpedia.org/ontology/> PREFIX dbp: <http://dbpedia.org/property/> PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> SELECT ?Abstract WHERE { dbr:$NAME$ dbo:abstract ?Abstract }
