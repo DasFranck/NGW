@@ -45,7 +45,7 @@ router.get('/hospitals/:id', function(req, res, next) {
         result_dbpedia = body_dbpedia.results.bindings[0]
       else
         result_dbpedia = {}
-      endpoint_linkedgeodata.selectQuery(`Prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> Prefix ogc: <http://www.opengis.net/ont/geosparql#> Prefix geom: <http://geovocab.org/geometry#> Prefix lgdo: <http://linkedgeodata.org/ontology/> Select ?l ?lon ?lat From <http://linkedgeodata.org> { ?s a lgdo:Amenity ; rdfs:label ?l ; geom:geometry [ ogc:asWKT ?g ] . FILTER( REGEX(?l, "(pharmacy|chemist)", "i")) . FILTER(bif:st_intersects (?g, bif:st_point (${result_stardog.Geo_Lon.value}, ${result_stardog.Geo_Lat.value}), 3)) . FILTER( REGEX(str(?g), "point", "i")) . BIND(STRBEFORE(STRAFTER(str(?g), "POINT("), " ") AS ?lon) . BIND(STRAFTER(STRBEFORE(str(?g), ")"), " ") AS ?lat) }`
+      endpoint_linkedgeodata.selectQuery(`Prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> Prefix ogc: <http://www.opengis.net/ont/geosparql#> Prefix geom: <http://geovocab.org/geometry#> Prefix lgdo: <http://linkedgeodata.org/ontology/> Select ?l ?lon ?lat From <http://linkedgeodata.org> { ?s a lgdo:Amenity ; rdfs:label ?l ; geom:geometry [ ogc:asWKT ?g ] . FILTER( REGEX(?l, "(pharmacy|chemist)", "i")) . FILTER(bif:st_intersects (?g, bif:st_point (${result_stardog.Geo_Lon.value}, ${result_stardog.Geo_Lat.value}), 1.2)) . FILTER( REGEX(str(?g), "point", "i")) . BIND(STRBEFORE(STRAFTER(str(?g), "POINT("), " ") AS ?lon) . BIND(STRAFTER(STRBEFORE(str(?g), ")"), " ") AS ?lat) }`
       ).then(function (res) {
         return res.json()
       }).then(function (body_linkedgeodata) {
