@@ -3,14 +3,27 @@
         <nav class="navbar navbar-inverse" role="navigation" style="padding-left:130px;">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/">Home<span class="sr-only">(current)</span></a></li>
-                <li><a href="/about">About us</a></li>
-                <li><a href="/contact">Contact us</a></li>
+                {{#if hospital_dbpedia.Abstract.value}}
+                    <li><a href="http://dbpedia.org/page/{{ custnom_name }}">DBpedia Page</a></li>
+                {{/if}}
             </ul>
         </nav>
     </div>
     <br/>
     <h1>{{hospital.Name.value}}</h1>
     <blockquote>
+        {{#if hospital_dbpedia.Abstract.value}}
+        <b>Description:</b><br>{{hospital_dbpedia.Abstract.value}}<br>
+        <br>
+        {{/if}}
+        {{#if hospital_dbpedia.BedCount.value}}
+        <b>Bed Count:</b> {{hospital_dbpedia.BedCount.value}}<br>
+        <br>
+        {{/if}}
+        {{#if hospital_dbpedia.Founded.value}}
+        <b>Founded in:</b> {{hospital_dbpedia.Founded.value}}<br>
+        <br>
+        {{/if}}
         <b>Code:</b> {{hospital.Code.value}}<br>
         <b>Category:</b> {{hospital.Category.value}}<br>
         <b>Sector:</b> {{hospital.Sector.value}}<br>
@@ -50,18 +63,55 @@
                 var map;
                 function initMap() {
                     var hospital_position = { lat: {{hospital.Geo_Lat.value}}, lng: {{hospital.Geo_Lon.value}} };
+                    
                     map = new google.maps.Map(document.getElementById('map'), {
                         center: hospital_position,
                         zoom: 12
                     });
+                    
+                    var infowindow = new google.maps.InfoWindow({
+                        content: "<h3>{{hospital.Name.value}}</h3>"{{#if hospital_dbpedia.Abstract.value}} + "{{hospital_dbpedia.Abstract.value}}" {{/if}}
+                    });
+
                     var marker = new google.maps.Marker({
                         position: hospital_position,
                         map: map
                     });
+                    marker.addListener('click', function() {
+                        infowindow.open(map, marker);
+                    });
+
+                    var infowindow_ph = []
+                    var marker_ph = []
+
+
+                    var image = {
+                        url:'https://imgur.com/wtzVhrQ.png',
+                        size: new google.maps.Size(20, 32)
+                    };
+                    {{#each hospital_lgd}}
+                        infowindow_ph.push(new google.maps.InfoWindow({
+                            content: "<h3>{{this.l.value}}</h3>"
+                        }));
+
+                        marker_ph.push(new google.maps.Marker({
+                            position: { lat: {{this.lat.value}}, lng: {{this.lon.value}} },
+                            map: map,
+                            icon: image
+                        }));
+                        
+                        marker_ph[{{@index}}].addListener('click', function() {
+                            infowindow_ph[{{@index}}].open(map, marker_ph[{{@index}}]);
+                        });
+                        
+                    {{/each}}
+                    console.log(marker_ph)
+                    console.log(infowindow_ph)
+
                 }
             </script>
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYB4wNcrSHw7Z4npxMy9V1-N2-h4pE6hQ&callback=initMap"
             async defer></script>
         {{/if}}{{/if}}
     </blockquote>
-</div>
+</div> 
