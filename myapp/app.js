@@ -1,5 +1,3 @@
-const { Connection, query } = require('stardog');
-
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -11,22 +9,6 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
-
-// Connect to database
-const conn = new Connection({
-  username: 'admin',
-  password: 'admin',
-  endpoint: 'http://localhost:5820',
-});
-
-/*
-query.execute(conn, 'ngw_project', 'select distinct ?s where { ?s ?p ?o }', {
-  limit: 10,
-  offset: 0,
-}).then(({ body }) => {
-  console.log(body.results.bindings);
-});
-*/
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
