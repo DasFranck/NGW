@@ -9,7 +9,59 @@
         </nav>
     </div>
     <br/>
-    <h1>{{hospital_id}}</h1>
+    <h1>{{hospital.Name.value}}</h1>
     <blockquote>
+        <b>Code:</b> {{hospital.Code.value}}<br>
+        <b>Category:</b> {{hospital.Category.value}}<br>
+        <b>Sector:</b> {{hospital.Sector.value}}<br>
+        <br>
+        {{#if hospital.Parent_Code.value}}
+        <b>Parent Code:</b> {{hospital.Parent_Code.value}}<br>
+        {{/if}}
+        {{#if hospital.Parent_Name.value}} 
+        <b>Parent Name:</b> {{hospital.Parent_Name.value}}<br>
+        {{/if}}
+        {{#if hospital.Parent_Code.value}}{{#if hospital.Parent_Name.value}} 
+        <br>
+        {{/if}}{{/if}}
+        {{#if hospital.Contact_Mail.value}}
+        <b>Contact Mail:</b> <a href=mailto:{{hospital.Contact_Mail.value}}>{{hospital.Contact_Mail.value}}</a><br>
+        {{/if}}
+        {{#if hospital.Contact_Phone.value}}
+        <b>Contact Phone:</b> {{hospital.Contact_Phone.value}}<br>
+        {{/if}}
+        {{#if hospital.Contact_Website.value}} 
+        <b>Contact Website:</b> <a href={{hospital.Contact_Website.value}}>{{hospital.Contact_Website.value}}</a><br>
+        {{/if}}
+        {{#if hospital.Contact_Mail.value}}{{#if hospital.Contact_Phone.value}}{{#if hospital.Contact_Website.value}} 
+        <br>
+        {{/if}}{{/if}}{{/if}}
+        <b>Address:</b><br>
+        {{hospital.Addr_Line1.value}}{{#if hospital.Addr_Line1.value}}{{#if hospital.Addr_Line2.value}}, {{/if}}{{/if}}{{hospital.Addr_Line2.value}}{{#if hospital.Addr_Line3.value}}, {{/if}}{{hospital.Addr_Line3.value}}<br>
+        {{hospital.Addr_City.value}}{{#if hospital.Addr_City.value}}<br>{{/if}}
+        {{hospital.Addr_County.value}}{{#if hospital.Addr_County.value}}<br>{{/if}}
+        {{hospital.Addr_Code.value}}
+        <br>
+        <br>
+        {{#if hospital.Geo_Lat.value}}{{#if hospital.Geo_Lon.value}}
+            <b>Localisation:</b>
+            <div id="map" style="width: 900px;height: 500px;"></div>
+            <script>
+                var map;
+                function initMap() {
+                    var hospital_position = { lat: {{hospital.Geo_Lat.value}}, lng: {{hospital.Geo_Lon.value}} };
+                    map = new google.maps.Map(document.getElementById('map'), {
+                        center: hospital_position,
+                        zoom: 12
+                    });
+                    var marker = new google.maps.Marker({
+                        position: hospital_position,
+                        map: map
+                    });
+                }
+            </script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYB4wNcrSHw7Z4npxMy9V1-N2-h4pE6hQ&callback=initMap"
+            async defer></script>
+        {{/if}}{{/if}}
     </blockquote>
 </div>

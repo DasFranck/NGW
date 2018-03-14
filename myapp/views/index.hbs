@@ -11,7 +11,7 @@
     <br/>
     <h1>A Hospital Information Web Application (UK)</h1>
     <blockquote>
-        <h2>Hospital founds :</h2>
+        <h2>{{hospital.length}} hospitals found:</h2>
         {{#each hospital}}
             <a href="/hospitals/{{this.Code.value}}">
                 {{this.Code.value}} - {{this.Name.value}}<br>
