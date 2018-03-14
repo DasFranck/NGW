@@ -10,7 +10,12 @@
     </div>
     <br/>
     <h1>A Hospital Information Web Application (UK)</h1>
-    <div class="jumbotron"> <p>
-        
-    </p></div>
+    <blockquote>
+        <h2>Hospital founds :</h2>
+        {{#each hospital}}
+            <a href="/hospitals/{{this.Code.value}}">
+                {{this.Code.value}} - {{this.Name.value}}<br>
+            </a>
+        {{/each}}
+    </blockquote>
 </div>
