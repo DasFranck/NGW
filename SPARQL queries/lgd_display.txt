@@ -1,0 +1,10 @@
+# DESCRIPTION #
+
+Affiche les infos suivantes qui sont disponibles pour un hôpital recherché:
+- LinkedGeoData
+
+! Modifier les valeurs $LON$ et $LAT$ par les longitude et latitude de l'hôpital !
+
+# INLINE QUERY #
+
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX ogc: <http://www.opengis.net/ont/geosparql#> PREFIX geom: <http://geovocab.org/geometry#> PREFIX lgdo: <http://linkedgeodata.org/ontology/> SELECT ?l ?g FROM <http://linkedgeodata.org> { ?s a lgdo:Amenity ; rdfs:label ?l ; geom:geometry [ogc:asWKT ?g] . FILTER( REGEX(?l, "(pharmacy|chemist)", "i")) . FILTER(bif:st_intersects (?g, bif:st_point ($LON$, $LAT), 1.5)) }
