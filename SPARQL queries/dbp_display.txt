@@ -7,4 +7,4 @@ Affiche les infos suivantes qui sont disponibles pour un hôpital recherché:
 
 # INLINE QUERY #
 
-PREFIX dbr: <http://dbpedia.org/resource/> PREFIX dbo: <http://dbpedia.org/ontology/> PREFIX dbp: <http://dbpedia.org/property/> PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> SELECT ?Abstract WHERE { dbr:$NAME$ dbo:abstract ?Abstract }
+PREFIX dbr: <http://dbpedia.org/resource/> PREFIX dbo: <http://dbpedia.org/ontology/> PREFIX dbp: <http://dbpedia.org/property/> PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> SELECT ?Abstract ?Bed ?Founded WHERE { dbr:Leicester_Royal_Infirmary dbo:abstract ?Abstract . OPTIONAL { dbr:Leicester_Royal_Infirmary dbo:bedCount ?Bed } . OPTIONAL { dbr:Leicester_Royal_Infirmary dbr:founded ?Founded } }
